@@ -1,0 +1,3 @@
+BAD AI
+
+dont use
