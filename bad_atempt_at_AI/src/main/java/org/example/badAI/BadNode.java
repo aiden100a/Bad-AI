@@ -1,5 +1,7 @@
 package org.example.badAI;
 
+import java.util.ArrayList;
+
 public class BadNode {
     private BadNodeType type;
     private double num;
@@ -7,8 +9,7 @@ public class BadNode {
     private long pointNumber;
 
 
-
-    public BadNode(BadNode out1, BadNode out2,long pointNumber) {
+    public BadNode(BadNode out1, BadNode out2, long pointNumber) {
         num = Math.random();
         out[1] = out1;
         out[2] = out2;
@@ -16,42 +17,55 @@ public class BadNode {
         this.pointNumber = pointNumber;
     }
 
-    public BadNode copy(BadNode[] madeNodes){
+    public boolean isInArrayByPointerNumberAndNotPointer(ArrayList<BadNode> check){
+        for (BadNode i:check){
+            if (i.getPointNumber() == pointNumber){
+                return true;
+            }
+        }
+        return false;
+
+    }
+
+    public BadNode copy(ArrayList<BadNode> madeNodes) {
         //holders
         BadNode c1 = null;
         BadNode c2 = null;
 
-        for (BadNode i:madeNodes){
-            if (i.getPointNumber() == out[1].getPointNumber()){
+
+
+        for (BadNode i : madeNodes) {
+            if (i.getPointNumber() == out[1].getPointNumber()) {
                 // add existing node
                 c1 = i;
             }
         }
-        if (c1 == null){
+        if (c1 == null) {
             //recursion D:
             c1 = out[1].copy(madeNodes);
             //make node make itself
         }
-        for (BadNode i:madeNodes){
-            if (i.getPointNumber() == out[2].getPointNumber()){
+        for (BadNode i : madeNodes) {
+            if (i.getPointNumber() == out[2].getPointNumber()) {
                 // add existing node
                 c2 = i;
             }
         }
-        if (c2 == null){
+        if (c2 == null) {
             //recursion D:
             c2 = out[2].copy(madeNodes);
             //make node make itself
         }
-        return new BadNode(c1,c2,pointNumber);
+        return new BadNode(c1, c2, pointNumber);
 
 
     }
+
     public long getPointNumber() {
         return pointNumber;
     }
 
-    public void scrambleType(){
+    public void scrambleType() {
         type = getRandomType();
     }
 
