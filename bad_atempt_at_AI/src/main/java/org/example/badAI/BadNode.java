@@ -17,13 +17,13 @@ public class BadNode {
         this.pointNumber = pointNumber;
     }
 
-    public boolean isInArrayByPointerNumberAndNotPointer(ArrayList<BadNode> check){
+    public BadNode getInArrayByPointerNumberAndNotPointer(ArrayList<BadNode> check){
         for (BadNode i:check){
             if (i.getPointNumber() == pointNumber){
-                return true;
+                return i;
             }
         }
-        return false;
+        return null;
 
     }
 
@@ -68,6 +68,8 @@ public class BadNode {
     public void scrambleType() {
         type = getRandomType();
     }
+
+    public void scrambleNum(){num += Math.random()-0.5;}
 
     public BadNode[] getOut() {
         return out;

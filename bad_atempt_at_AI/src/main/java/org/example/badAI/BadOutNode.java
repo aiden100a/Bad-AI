@@ -6,7 +6,7 @@ public class BadOutNode extends BadNode {
     private double num;
 
     public BadOutNode(long pointNumber) {
-        super(null, null,pointNumber);
+        super(null, null, pointNumber);
     }
 
     @Override
@@ -17,6 +17,8 @@ public class BadOutNode extends BadNode {
     public double getNum() {
         return num;
     }
+
+    public void reset(){num = 0;}
 
     @Override
     public BadOutNode copy(ArrayList<BadNode> madeNodes) {
